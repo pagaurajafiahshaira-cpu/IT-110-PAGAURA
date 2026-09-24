@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Practical Application Activity</title>
+</head>
+<body>
+
+  <h1 id="main-heading">My HTML Practical Activity</h1>
+
+  <!-- ========== 1. IMAGES ========== -->
+  <h2 id="images">Images</h2>
+
+  <img src="images/image1.jpg" alt="Describe what is shown in image 1" width="300">
+  <img src="images/image2.jpg" alt="Describe what is shown in image 2" width="300" height="200">
+
+  <figure id="featured-figure">
+    <img src="images/image3.jpg" alt="Describe what is shown in image 3" width="300">
+    <figcaption>Figure 1: A short caption describing image 3.</figcaption>
+  </figure>
+
+  <!-- ========== 2. HYPERLINKS ========== -->
+  <h2 id="hyperlinks">Hyperlinks</h2>
+
+  <ul id="link-list">
+    <li><a href="#multimedia">Internal link: jump to the Multimedia section</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">External link: MDN HTML docs (opens in a new tab)</a></li>
+    <li><a href="mailto:your.email@example.com">Email link: send me an email</a></li>
+    <li><a href="#main-heading">Anchor link: back to the top of the page</a></li>
+  </ul>
+
+  <!-- ========== 3. MULTIMEDIA ========== -->
+  <h2 id="multimedia">Multimedia</h2>
+
+  <h3>Audio</h3>
+  <audio controls>
+    <source src="media/sample.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h3>Video</h3>
+  <video controls width="400">
+    <source src="media/sample.mp4" type="video/mp4">
+    Your browser does not support the video element.
+  </video>
+
+  <!-- ========== 4. USEFUL TAGS ========== -->
+  <h2 id="useful-tags">Useful Tags</h2>
+
+  <!-- <blockquote> is used because it marks up a quotation from another source -->
+  <blockquote>
+    "The best way to learn is by doing."
+  </blockquote>
+
+  <!-- <abbr> is used because it explains an abbreviation when the user hovers over it -->
+  <p>I am learning <abbr title="HyperText Markup Language">HTML</abbr>.</p>
+
+  <!-- <mark> is used because it highlights text that is important -->
+  <p>Remember to <mark>commit your work</mark> before opening a pull request.</p>
+
+  <!-- <code> is used because it shows inline code in a monospaced font -->
+  <p>Create a new branch with <code>git checkout -b surname-givenname-act-2</code>.</p>
+
+  <!-- ========== 5. HTML DOM ========== -->
+  <h2 id="html-dom">HTML DOM</h2>
+  <p>I gave ids to several elements (main-heading, featured-figure, link-list) and inspected them in the browser's DevTools. The screenshot is saved as <code>dom-tree.png</code>.</p>
+  <img src="dom-tree.png" alt="Screenshot of the browser DevTools Elements panel showing the DOM tree" width="500">
+
+  <!--
+    Parent-child explanation (edit this in your own words):
+    The <figure> element with id="featured-figure" is the parent of the <img> and the <figcaption>,
+    which makes those two elements its children and siblings of each other.
+    In the same way, the <ul> with id="link-list" is the parent of every <li> inside it.
+    Each <li> is in turn the parent of its <a> link, so the DOM forms a nested tree structure.
+    Seeing this in the DevTools Elements panel helped me understand how the browser organizes the page.
+  -->
+
+</body>
+</html>
