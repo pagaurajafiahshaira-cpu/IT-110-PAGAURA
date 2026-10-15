@@ -1,0 +1,231 @@
+/* ==========================================================
+   styles.css - Profile Card (gray and pink theme)
+   ========================================================== */
+
+/*☐ PART A:Write at least 8 complete rules, each with a selector and a { property: value; } declaration block.*/
+
+/* ===================== 1. RESET ===================== */
+
+/* Part B (universal selector): reset margin and padding.
+   Part C (box-sizing): border-box includes padding + border in width. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Smooth scrolling when a nav link is tapped. */
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* ===================== 2. BASE ===================== */
+
+/* Part B (type selector + properties): style body.
+   Colors in three ways: name (lightgray), hex (#444444). */
+body {
+  font-family: Arial, Helvetica, sans-serif;  /* font-family */
+  font-size: 1rem;                            /* Part A (unit): rem */
+  color: #444444;                             /* color as hex */
+  background-color: lightgray;                /* color as name */
+}
+
+/* Part B (grouping selector): h1 and h2 share these styles. */
+h1, h2 {
+  font-weight: bold;                          /* font-weight */
+  color: #333333;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.3rem; margin-bottom: 10px; }
+
+/* Part B (pseudo-element ::before): pink dot before each h2. */
+h2::before {
+  content: "\25CF ";
+  color: hotpink;
+  font-size: 0.7em;                           /* Part A (unit): em */
+}
+
+
+/* ===================== 3. LAYOUT ===================== */
+
+/* Part C (text-align): center text in header and footer. */
+header, footer {
+  text-align: center;                         /* text-align */
+  padding: 20px;                              /* Part A (unit): px */
+  background-color: #cfcfcf;
+  border-bottom: 4px solid #ff69b4;
+}
+
+footer {
+  margin-top: 10px;
+  border-bottom: none;
+  border-top: 4px solid #ff69b4;
+}
+
+main { padding: 20px 10px; }
+
+
+/* ===================== 4. NAVIGATION ===================== */
+
+/* Part D (inline-block): links sit in a row but accept
+   padding and background so width/height spacing works. */
+nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 10px 4px 0;
+  background-color: #888888;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+}
+
+/* Part B (pseudo-class :hover): nav links turn pink on hover. */
+nav a:hover {
+  background-color: #ff69b4;
+}
+
+
+/* ===================== 5. CARDS ===================== */
+
+/* Part B (class selector) + Part C (box model):
+   fixed width, padding, border (width style color in one line),
+   border-radius. margin: 0 auto centers the card horizontally,
+   margin-bottom spaces the cards apart.
+   max-width keeps it from overflowing small phone screens. */
+.card {
+  width: 500px;
+  max-width: 100%;
+  padding: 20px;
+  border: 2px solid #999999;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+  margin: 0 auto 20px;
+}
+
+/* Part C (total width): box-sizing is border-box, so the card is
+   500px total. Content = 500 - 40 (padding) - 4 (border) = 456px. */
+
+/* Part B (descendant selector): every p inside a .card. */
+.card p {
+  margin-bottom: 8px;
+}
+
+/* Part B (class selector + ::first-letter): intro text styling. */
+.intro {
+  font-style: italic;
+  color: rgb(90, 90, 90);                     /* color as rgb() */
+}
+
+.intro::first-letter {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #ff69b4;
+}
+
+/* Part B (ID selector): #about stands out with a thick pink border.
+   Part C (positioning): relative makes it the anchor for the badge. */
+#about {
+  border: 3px solid #ff69b4;
+  position: relative;
+}
+
+/* Part C (positioning): badge placed absolutely at top-right. */
+#about::after {
+  content: "Featured";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  color: white;
+  background-color: rgba(255, 20, 147, 0.85); /* color as rgba() */
+  border-radius: 10px;
+}
+
+/* Part B (ID selector): #skills gets a dashed pink border. */
+#skills {
+  border: 3px dashed #ff69b4;
+}
+
+
+/* ===================== 6. SKILLS (FLEX) ===================== */
+
+/* Part D (flex): items laid out in a row using gap + justify-content. */
+.skills-list {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  list-style: none;
+}
+
+/* Part B (child selector): only direct li of .skills-list.
+   Part D: each li looks like a small pink tag. */
+.skills-list > li {
+  padding: 4px 14px;
+  background-color: #ff69b4;
+  color: white;
+  border-radius: 14px;
+  font-size: 0.9rem;
+}
+
+
+/* ===================== 7. DISPLAY / VISIBILITY ===================== */
+
+/* Part D: display: none removes the element and leaves NO gap. */
+.hide-none {
+  display: none;
+}
+
+/* Part D: visibility: hidden hides it but KEEPS its space. */
+.hide-visibility {
+  visibility: hidden;
+}
+
+/* Part D (difference): with .hide-none the next paragraph moves up;
+   with .hide-visibility an empty gap stays on the page. */
+
+/* Part D (overflow): fixed height + auto gives a scrollbar. */
+.scroll-box {
+  height: 120px;
+  overflow: auto;
+}
+
+
+/* ===================== 8. CASCADE ===================== */
+
+/* Part A (cascade): two rules target the same element (.intro).
+   Rule 1: p (type selector) sets gray text. */
+p {
+  color: #737373;
+}
+/* Rule 2: .intro above sets color: rgb(90, 90, 90).
+   WINNER: .intro, because a class selector is more specific than a
+   type selector. Specificity is checked before source order. */
+
+
+/* ===================== REFLECTION ANSWERS =====================
+
+   1. The .intro rule won because a class selector (0,1,0) has
+      higher specificity than a type selector (0,0,1). Order only
+      matters when specificity is equal; then the later rule wins.
+
+   2. With content-box, width 500px is content only:
+      500 + 20 + 20 (padding) + 2 + 2 (border) = 544px total.
+
+   3. Use visibility: hidden when the layout must not shift
+      (e.g. a tooltip that appears later). Use display: none when
+      the space should be freed.
+   =================
+============================================= */
+
+/* Demo only: make cards taller so the page can scroll
+   and the nav links visibly jump to each section. */
+html {
+  scroll-behavior: smooth;
+}
+
+#about, #skills, #notes {
+  min-height: 60vh;
+}
